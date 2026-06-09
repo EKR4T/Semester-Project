@@ -99,7 +99,7 @@
 | 5 | RELAY-SPST | U5 | RELAY-TH_RELAY-SPST | 1 |
 
 **Schematic Diagram:**
-[Design C Schematic - Two ESP32S with Relay Control](image.png)
+[Design C Schematic - Two ESP32S with Relay Control](Design_C_Schematic.png)
 
 **Key Features:**
 - Relay acts as an interface between the two ESP32 modules
