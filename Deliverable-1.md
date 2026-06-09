@@ -137,8 +137,7 @@
 ![Design B Schematic - Two ESP32S Modules with UART Communication](Design_B_Schematic.png)
 **Key Features:**
 - Modular architecture with sensor-specific ESP32 modules
-- UART serial communication protocol enables independent sensor processing
-- Distributed processing reduces single-point failure risk
+- UART serial communication protocol enables independent sensor processing- Distributed processing reduces single-point failure risk
 - Each module optimized for its specific sensor type
 - Scalable design allows for future expansion with additional sensors
 - Ideal for systems requiring separated sensor modules and data aggregation
@@ -165,7 +164,7 @@
 | 5 | RELAY-SPST | U5 | RELAY-TH_RELAY-SPST | 1 |
 
 **Schematic Diagram:**
-[Design C Schematic - Two ESP32S with Relay Control](Design_C_Schematic.png)
+![Design C Schematic - Two ESP32S with Relay Control](Design_C_Schematic.png)
 
 **Key Features:**
 - Relay acts as an interface between the two ESP32 modules
