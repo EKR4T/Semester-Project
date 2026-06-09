@@ -5,7 +5,7 @@
 
 ---
 
-## 1. Flower Environmental Requirements
+## 1. Flower Environmental Requirements Done By Emmanuel Keter
 
 **Flower:** Roses
 
@@ -20,7 +20,7 @@
 
 ---
 
-## 2. Hardware Components
+## 2. Hardware Components Done By Jude Makau
 
 ### Microcontroller
 - ESP32S DevKit WiFi + BLE Module (30-Pin)
@@ -45,7 +45,7 @@
 
 ---
 
-## 3. Component Datasheets and Reference Webpages
+## 3. Component Datasheets and Reference Webpages Done By Ian Kiome
 
 ### a. 1.3" White IIC 128X64 OLED LCD
 - **Datasheet (SH1106 Controller):** [Pololu SH1106 PDF](https://www.pololu.com/file/0J1813/SH1106.pdf)
@@ -69,17 +69,83 @@
 
 ## 4. Schematic Circuit Diagrams
 
-### Design A: Single ESP32S with All Sensors and LCD
-*To be completed*
+### Design A: Single ESP32S with All Sensors and LCD Done By Mary Queenvine 
+
+**Architecture:** 1 ESP32S connected to 1 MQ-5, 1 DHT22 and 1 LCD
+
+**Circuit Configuration:**
+- **Microcontroller:** ESP32-WROOM-32 serves as the main processing unit
+- **Temperature & Humidity Sensing:** DHT22 sensor connected to ESP32 for environmental monitoring
+- **Gas Detection:** MQ-5 sensor interfaced with ESP32 for LPG/natural gas/coal gas detection
+- **Display:** 1.3" White IIC 128X64 OLED LCD connected to ESP32 via I2C protocol for real-time data visualization
+- **Power Supply:** Central +3.3V and +5V power distribution with appropriate grounding
+- **Signal Conditioning:** Includes resistors for proper signal voltage levels and protection
+
+**Component Details:**
+| Component | Connection | Purpose |
+|-----------|-----------|---------|
+| ESP32-WROOM-32 | Central Hub | Main microcontroller for sensor data processing |
+| DHT22 (AM2302) | Analog/Digital Input | Temperature and humidity measurement |
+| MQ-5 Sensor | Analog Input (A0) | Gas concentration detection |
+| 1.3" OLED LCD (IIC 128X64) | I2C Interface (SDA/SCL) | Data display and monitoring interface |
+| Power Distribution | +3.3V / +5V / GND | Power supply for all components |
+
+**Schematic Diagram:**
+![Design A Schematic - Single ESP32S with All Sensors and LCD](Design_A_Schematic.png)
+**Key Features:**
+- All sensors integrated on a single ESP32 microcontroller
+- I2C communication protocol simplifies wiring for OLED display
+- Centralized monitoring of temperature, humidity, and gas levels
+- Real-time display of all environmental parameters
+- Most straightforward and compact design configuration
+- Ideal for single-location monitoring systems
 
 ---
 
-### Design B: Two ESP32S Modules Communicating (MQ-5 and DHT22 Separated)
-*To be completed*
+### Design B: Two ESP32S Modules Communicating (MQ-5 and DHT22 Separated) Done By Wesley Ryan
+
+**Architecture:** 1 ESP32S connected to 1 MQ-5 interfaced directly with another ESP32S connected to 1 DHT22
+
+**Circuit Configuration:**
+- **Module 1 (Left - MQ-5 Module):** ESP32-WROOM-32 dedicated to gas sensing with MQ-5 LPG/Natural Gas/Coal Gas sensor
+  - MQ-5 analog output (A0) connected to ESP32 analog input for gas concentration measurement
+  - Signal conditioning with resistors (R1, R2) for proper voltage levels
+  - Voltage divider circuit for signal protection
+  
+- **Module 2 (Right - DHT22 Module):** ESP32-WROOM-32 dedicated to environmental sensing with DHT22 temperature and humidity sensor
+  - DHT22 digital output connected to ESP32 GPIO pin (DHT_DATA)
+  - Pull-up resistor (R2) for digital signal line
+  
+- **Inter-Module Communication:** UART serial communication (UART_A and UART_B) connecting the two ESP32 modules
+  - TX/RX lines for bidirectional data exchange
+  - Allows real-time sensor data sharing between modules
+  
+- **Power Supply:** Independent +3.3V and GND for each module with shared communication ground
+
+**Component Details:**
+| Component | Module | Connection | Purpose |
+|-----------|--------|-----------|---------|
+| ESP32-WROOM-32 | 1 (Left) | Central Hub | Main microcontroller for gas detection processing |
+| ESP32-WROOM-32 | 2 (Right) | Central Hub | Main microcontroller for environmental data processing |
+| MQ-5 Sensor | 1 | Analog Input (A0) | Gas concentration detection |
+| DHT22 (AM2302) | 2 | Digital GPIO | Temperature and humidity measurement |
+| Resistor R1 | 1 | Signal Conditioning | Voltage divider for MQ-5 output |
+| Resistor R2 | Both | Pull-up / Signal Line | Digital signal line stabilization for DHT22 |
+| UART Interface | Both | Serial Communication | Data exchange between the two modules |
+
+**Schematic Diagram:**
+![Design B Schematic - Two ESP32S Modules with UART Communication](Design_B_Schematic.png)
+**Key Features:**
+- Modular architecture with sensor-specific ESP32 modules
+- UART serial communication protocol enables independent sensor processing
+- Distributed processing reduces single-point failure risk
+- Each module optimized for its specific sensor type
+- Scalable design allows for future expansion with additional sensors
+- Ideal for systems requiring separated sensor modules and data aggregation
 
 ---
 
-### Design C: Two ESP32S Modules Connected via Relay (DHT22 Controlling MQ-5)
+### Design C: Two ESP32S Modules Connected via Relay (DHT22 Controlling MQ-5) Done By Louis Karanja
 
 **Architecture:** 1 ESP32S connected to 1 DHT22 connected to 1 relay which is connected to another ESP32S connected to 1 MQ-5
 
