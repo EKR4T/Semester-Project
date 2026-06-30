@@ -1,5 +1,5 @@
 # ICS 4111: Embedded Systems & IoT - GROUP 8 DOREMI
-## Semester Project: Deliverable 1
+## Semester Project: Deliverable 1 - Component Selection, Requirements and Schematic Designs Compiled by Terrence Cheruiyot
 
 **Objective:** Identify requirements that support individual flower growth and develop schematic designs of embedded devices
 
@@ -91,7 +91,7 @@
 | Power Distribution | +3.3V / +5V / GND | Power supply for all components |
 
 **Schematic Diagram:**
-![Design A Schematic - Single ESP32S with All Sensors and LCD](Design_A_Schematic.png)
+![Design A Schematic - Single ESP32S with All Sensors and LCD](images/Design_A_Schematic.png)
 **Key Features:**
 - All sensors integrated on a single ESP32 microcontroller
 - I2C communication protocol simplifies wiring for OLED display
@@ -134,7 +134,7 @@
 | UART Interface | Both | Serial Communication | Data exchange between the two modules |
 
 **Schematic Diagram:**
-![Design B Schematic - Two ESP32S Modules with UART Communication](Design_B_Schematic.png)
+![Design B Schematic - Two ESP32S Modules with UART Communication](images/Design_B_Schematic.png)
 **Key Features:**
 - Modular architecture with sensor-specific ESP32 modules
 - UART serial communication protocol enables independent sensor processing- Distributed processing reduces single-point failure risk
@@ -164,7 +164,7 @@
 | 5 | RELAY-SPST | U5 | RELAY-TH_RELAY-SPST | 1 |
 
 **Schematic Diagram:**
-![Design C Schematic - Two ESP32S with Relay Control](Design_C_Schematic.png)
+![Design C Schematic - Two ESP32S with Relay Control](images/Design_C_Schematic.png)
 
 **Key Features:**
 - Relay acts as an interface between the two ESP32 modules
