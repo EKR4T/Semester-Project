@@ -33,7 +33,8 @@
 - MQ-5 LPG, Natural Gas, and Coal Gas Sensor
 
 ### Actuators & Display
-- 1.3" White IIC 128X64 OLED LCD Display
+- 16x2 I2C LCD Display (primary physical prototype)
+- 1.3" White IIC 128X64 OLED Display (simulation and alternate interface)
 - 5V 1-Channel Low Level Trigger Relay Module
 
 ### Prototyping, Power & Wiring
@@ -42,6 +43,7 @@
 - Micro-USB Cable
 - 5V 2A Power Adapter (or Power Bank)
 - 10k Ohm Resistors
+- 10k Potentiometer (used as MQ-5 analog simulator in Wokwi)
 
 ---
 
@@ -91,7 +93,7 @@
 | Power Distribution | +3.3V / +5V / GND | Power supply for all components |
 
 **Schematic Diagram:**
-![Design A Schematic - Single ESP32S with All Sensors and LCD](images/Design_A_Schematic.png)
+![Design A Schematic - Single ESP32S with All Sensors and LCD](images/1/Design_A_Schematic.png)
 **Key Features:**
 - All sensors integrated on a single ESP32 microcontroller
 - I2C communication protocol simplifies wiring for OLED display
@@ -134,7 +136,7 @@
 | UART Interface | Both | Serial Communication | Data exchange between the two modules |
 
 **Schematic Diagram:**
-![Design B Schematic - Two ESP32S Modules with UART Communication](images/Design_B_Schematic.png)
+![Design B Schematic - Two ESP32S Modules with UART Communication](images/1/Design_B_Schematic.png)
 **Key Features:**
 - Modular architecture with sensor-specific ESP32 modules
 - UART serial communication protocol enables independent sensor processing- Distributed processing reduces single-point failure risk
@@ -164,7 +166,7 @@
 | 5 | RELAY-SPST | U5 | RELAY-TH_RELAY-SPST | 1 |
 
 **Schematic Diagram:**
-![Design C Schematic - Two ESP32S with Relay Control](images/Design_C_Schematic.png)
+![Design C Schematic - Two ESP32S with Relay Control](images/1/Design_C_Schematic.png)
 
 **Key Features:**
 - Relay acts as an interface between the two ESP32 modules
