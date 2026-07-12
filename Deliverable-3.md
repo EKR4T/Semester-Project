@@ -53,7 +53,7 @@ Sensor data is stored in an InfluxDB Cloud time-series bucket.
 | Bucket | `iot_data` |
 | Measurement | `air_quality` |
 | Fields | `temperature_c`, `humidity_pct`, `gas_level_pct`, `mq5_raw`, `mq5_voltage` |
-| Tags | `device: esp32s-01`, `location: wokwi-sim` (see note above) |
+| Tags | `device: esp32s-01`, `location: wokwi-sim` (see note below) |
 
 ![InfluxDB Data Explorer](images/3/InfluxDB_Dashboard.png)
 
@@ -91,6 +91,7 @@ https://github.com/EKR4T/Semester-Project
 ### Team Collaboration Evidence
 
 ![Group Photo](images/3/Group_Photo.png)
+
 
 ---
 
