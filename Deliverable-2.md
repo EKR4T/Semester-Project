@@ -27,15 +27,15 @@ Develop physical and simulated ESP32 prototypes from the Deliverable 1 architect
 
 ## Important Notice: MQ-5 Sensor Substitution in Wokwi
 
-Wokwi does not include an actual MQ-5 gas sensor model. For simulated prototypes, we substituted a 10k potentiometer to provide a variable analog voltage input.
+Wokwi does not include an MQ-5 model specifically. For Prototype A, we substituted a 10k potentiometer to provide a variable analog voltage input. For Prototype C, we instead used Wokwi's built-in generic gas sensor component (relabeled MQ-5 on the diagram) since its analog output behaves closer to a real gas sensor than a potentiometer.
 
-### Why this substitution is valid
+### Why the potentiometer substitution is valid (Prototype A)
 
 - The MQ-5 sensor outputs an analog voltage proportional to gas concentration.
 - A potentiometer also provides a variable analog voltage to the ESP32 ADC.
 - The prototype logic focuses on ADC read, threshold classification, and relay activation.
 
-In the final physical build, the actual MQ-5 sensor must replace the potentiometer.
+In the final physical build, the actual MQ-5 sensor must replace both the potentiometer and the generic gas sensor part.
 
 
 ---
@@ -55,6 +55,8 @@ In the final physical build, the actual MQ-5 sensor must replace the potentiomet
 - 10k potentiometer (simulation substitute for MQ-5)
 - 16x2 I2C LCD display
 - Breadboard, jumper wires, USB cable
+
+> Component protection note: the DHT22, I2C LCD backpack, and MQ-5 breakout modules used in the physical build carry their own onboard pull-up/current-limiting resistors, so no additional discrete resistors were wired in beyond those already on the modules.
 
 ## Pin Connections
 
@@ -161,7 +163,7 @@ ESP32 B reads temperature and humidity from DHT22 and sends those readings to ES
 ![Physical Evidence Connection](images/2/Prototype_B_1.png)
 ![Arduino Physical Serial Monitor](images/2/Prototype_B_2.png)
 
-> Note: Prototype B validates the two-node architecture from Deliverable 1 and shows the planned UART-based data exchange. If you want, we can add a short schematic-style table showing the UART message format.
+> Note: Prototype B validates the two-node architecture from Deliverable 1 and shows the planned UART-based data exchange. The captured serial monitor above shows ESP32 A's console (gas values transmitted over UART); ESP32 B's console was not photographed. Bidirectional data exchange between both nodes was confirmed working during live testing.
 
 ---
 
@@ -178,7 +180,7 @@ ESP32 B reads temperature and humidity from DHT22 and sends those readings to ES
 - ESP32 DevKit module
 - DHT22 sensor
 - Relay module
-- 10k potentiometer (MQ-5 simulation)
+- Wokwi generic gas sensor part, relabeled MQ-5 (simulation)
 - 128x64 OLED display (simulation)
 - Breadboard, jumper wires
 
@@ -259,15 +261,6 @@ if (outOfBand) {
 
 ---
 
-# Conclusion
-
-The completed prototypes show that Deliverable 1 architecture can be implemented in both physical and simulated forms. Prototype A provides a working single-board monitor. Prototype B proves modular UART communication between ESP32 nodes. Prototype C validates relay-based conditional activation of gas monitoring.
-
-The report includes all published Wokwi links, simulation evidence, and physical breadboard photographs to support evaluation.
-
-
----
-
 # Evidence of Group Work
 
 ## GitHub Repository
@@ -285,6 +278,6 @@ https://github.com/EKR4T/Semester-Project
 
 # Conclusion
 
-Three embedded system architectures were successfully implemented and simulated using ESP32 microcontrollers. The systems demonstrated environmental monitoring, data display, inter-device communication, and relay-based control mechanisms.
+The completed prototypes show that the Deliverable 1 architectures can be implemented in both physical and simulated forms. Prototype A provides a working single-board monitor demonstrated on both hardware and Wokwi. Prototype B proves modular UART communication between two physical ESP32 nodes. Prototype C validates relay-based conditional activation of gas monitoring in simulation.
 
-Although the MQ-5 sensor was unavailable in the Wokwi simulator, a potentiometer was successfully used as a substitute to emulate gas concentration readings and validate system functionality. The results confirmed that the proposed architectures can support intelligent environmental monitoring applications such as greenhouse automation and flower growth monitoring systems.
+Where the MQ-5 sensor was unavailable in the Wokwi simulator, a potentiometer (Prototype A) or Wokwi's generic gas sensor part (Prototype C) was used as a substitute to emulate gas concentration readings and validate system functionality. The results confirm that the proposed architectures can support intelligent environmental monitoring applications such as greenhouse automation and flower growth monitoring systems. The report includes all published Wokwi links, simulation evidence, and physical breadboard photographs to support evaluation.
